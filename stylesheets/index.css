@@ -1,0 +1,172 @@
+*{
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+body {
+  height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.banner {
+  display: flex;
+  gap: 3em;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.logo {
+  height: 8em;
+}
+
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  margin-top: 1em;
+  height: 30em;
+}
+
+h1 {
+  font-size: 4em;
+  color: rgb(253,63,107);
+  letter-spacing: .25em;
+}
+
+.click-img:hover {
+  filter: drop-shadow(0 0 2em rgb(253,63,107));
+}
+
+.click-img {
+  height: 16em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.aside {
+  border: 2px double white;
+  width: 35%;
+  padding-block: .5em;
+}
+
+h3 {
+  font-size:xx-large;
+  font-weight: 800;
+  color: rgb(253,63,107);
+}
+
+.pokys {
+  color: rgb(253,63,107);
+}
+
+.upgrades {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  place-items: center;
+  justify-content: center;
+  margin: .5em .5em;
+}
+
+.upgrades-text {
+  font-size:medium ;
+}
+
+.upgrades-header {
+  display: flex;
+  gap: 7.7em;
+  margin-bottom: .5em;
+}
+
+.upgrades-header-text {
+  border-bottom: 0.125em solid rgb(253,63,107);
+  letter-spacing: .5px;
+  font-weight: 600 ;
+}
+
+.upgrade-pikachu {
+  display: flex;
+  gap: 7.5em;
+  border: 1px solid gray;
+  padding: .5em .75em;
+  cursor: pointer;
+  transition: .75s;
+  position: relative;
+}
+
+.upgrades-info {
+  position: absolute;
+  top: -1em;
+  background-color: #888;
+  text-align: center;
+  padding: .1em .25em;
+  display: none;
+  transition: 1s;
+}
+
+.upgrade-pikachu:hover {
+  border: 1px solid rgb(253,63,107);
+}
+
+.upgrade-pikachu:hover .upgrades-info{
+  display: block;
+}
+
+.upgrade-increase {
+  background-color: #888;
+}
+
+.footer {
+  position: absolute;
+  right: 20%;
+  bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-top: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

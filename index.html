@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./stylesheets/index.css">
+  <title>PokeClick</title>
+</head>
+<body>
+  <header class='banner'>
+    <img src='./images/applogobg.jpg' alt="PokeClick Logo" class="logo"/>
+    <h1 class='title'>PokeClick</h1>
+  </header>
+
+  <main class="main-section">
+    <img src="./images/click.png" class='click-img' alt="click pokeball image" onclick="increment()" />
+    <aside class='aside'>
+      <section class="upgrades-pokys">
+        <h3>Pokys: <span class="pokys">0</span></h3>
+      </section>
+      <section class="upgrades">
+        <article class="upgrades-header">
+          <p class='upgrades-text upgrades-header-text'>Upgrade</p>
+          <p class='upgrades-text upgrades-header-text'>Costo</p>
+        </article>
+        <article class="upgrade-pikachu" onclick="buyUpgrade()">
+          <p class='upgrades-text up-pikachu'>Pikachu</p>
+          <p class="upgrades-level">Level: <span class="upgrade-level">1</span></p>
+          <p class='upgrades-text'><span class="upgrade-cost">10</span> pokys</p>
+          <p class="upgrades-info">+ <span class="upgrade-increase">0.1</span> Pokys/s</p>
+        </article>
+      </section>
+    </aside>      
+  </main>
+  <div class="footer">
+    <button class="reset" onclick="resetGame()">
+      Reset
+    </button>
+    <p class="read-the-docs">
+      Firthunandz 5/5/2024
+    </p>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
