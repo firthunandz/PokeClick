@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class='banner'>
-    <img src='./images/applogobg.jpg' alt="PokeClick Logo" class="logo"/>
+    <img src='./images/applogo.png' alt="PokeClick Logo" class="logo"/>
     <h1 class='title'>PokeClick</h1>
   </header>
 
@@ -19,27 +19,110 @@
         <h3>Pokys: <span class="pokys">0</span></h3>
       </section>
       <section class="upgrades">
-        <article class="upgrades-header">
-          <p class='upgrades-text upgrades-header-text'>Upgrade</p>
-          <p class='upgrades-text upgrades-header-text'>Costo</p>
+        <article class="card upgrade pikachu" onclick="buyPikachu()">
+          <div class="content">
+            <h4 class="card-name">Pikachu</h4>
+            <img class="card-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" alt="Pikachu">
+            <div class="card-info">
+              <div class="card-info-left">
+                <p class="card-info-header-text">Pokys/s</p>
+                <p class="card-info-text">+ <span class="pikachu-increase card-info-text">1</span></p>
+              </div>
+              <div class="card-info-mid">
+                <p class="card-info-header-text">Cost</p>
+                <p class="card-info-text"><span class="pikachu-cost card-info-text">10</span> Pokys</p>
+              </div>
+              <div class="card-info-right">
+                <p class="card-info-header-text">Level</p>
+                <p class="card-info-text"><span class="pikachu-level card-info-text">0</span></p>
+              </div>
+            </div>
+          </div>
         </article>
-        <article class="upgrade-pikachu" onclick="buyUpgrade()">
-          <p class='upgrades-text up-pikachu'>Pikachu</p>
+
+        <article class="card upgrade bulbasaur" onclick="buyBulbasaur()">
+          <div class="content">
+            <h4 class="card-name">bulbasaur</h4>
+            <img class="card-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="bulbasaur">
+            <div class="card-info">
+              <div class="card-info-left">
+                <p class="card-info-header-text">Pokys/s</p>
+                <p class="card-info-text">+ <span class="bulbasaur-increase card-info-text">2</span></p>
+              </div>
+              <div class="card-info-mid">
+                <p class="card-info-header-text">Cost</p>
+                <p class="card-info-text"><span class="bulbasaur-cost card-info-text">200</span> Pokys</p>
+              </div>
+              <div class="card-info-right">
+                <p class="card-info-header-text">Level</p>
+                <p class="card-info-text"><span class="bulbasaur-level card-info-text">0</span></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card upgrade charmander" onclick="buyCharmander()">
+          <div class="content">
+            <h4 class="card-name">Charmander</h4>
+            <img class="card-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="charmander">
+            <div class="card-info">
+              <div class="card-info-left">
+                <p class="card-info-header-text">Pokys/s</p>
+                <p class="card-info-text">+ <span class="charmander-increase card-info-text">5</span></p>
+              </div>
+              <div class="card-info-mid">
+                <p class="card-info-header-text">Cost</p>
+                <p class="card-info-text"><span class="charmander-cost card-info-text">500</span> Pokys</p>
+              </div>
+              <div class="card-info-right">
+                <p class="card-info-header-text">Level</p>
+                <p class="card-info-text"><span class="charmander-level card-info-text">0</span></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card upgrade squirtle" onclick="buySquirtle()">
+          <div class="content">
+            <h4 class="card-name">squirtle</h4>
+            <img class="card-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/7.svg" alt="squirtle">
+            <div class="card-info">
+              <div class="card-info-left">
+                <p class="card-info-header-text">Pokys/s</p>
+                <p class="card-info-text">+ <span class="squirtle-increase card-info-text">10</span></p>
+              </div>
+              <div class="card-info-mid">
+                <p class="card-info-header-text">Cost</p>
+                <p class="card-info-text"><span class="squirtle-cost card-info-text">1000</span> Pokys</p>
+              </div>
+              <div class="card-info-right">
+                <p class="card-info-header-text">Level</p>
+                <p class="card-info-text"><span class="squirtle-level card-info-text">0</span></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+
+          <!-- 
+        <article class="upgrade bulbasaur" onclick="buyUpgrade()">
+          <p class='upgrades-text up-bulbasaur'>Bulbasaur</p>
           <p class="upgrades-level">Level: <span class="upgrade-level">1</span></p>
-          <p class='upgrades-text'><span class="upgrade-cost">10</span> pokys</p>
-          <p class="upgrades-info">+ <span class="upgrade-increase">0.1</span> Pokys/s</p>
-        </article>
+          <p class='upgrades-text'><span class="upgrade-cost">100</span> Pokys</p>
+          <p class="upgrades-info">+ <span class="upgrade-increase">2</span> Pokys/s</p>
+        </article> -->
       </section>
     </aside>      
   </main>
-  <div class="footer">
+  <footer>
     <button class="reset" onclick="resetGame()">
       Reset
     </button>
-    <p class="read-the-docs">
+    <p class="footer-text">
       Firthunandz 5/5/2024
     </p>
-  </div>
+  </footer>
 
   <script src="index.js"></script>
 </body>
