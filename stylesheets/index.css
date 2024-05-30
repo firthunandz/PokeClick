@@ -77,11 +77,17 @@ h1 {
   height: 16em;
   will-change: filter;
   transition: filter 300ms;
+  cursor: pointer;
+  position: relative;
 }
 
 .aside {
   border: 2px double white;
   padding-block: .5em;
+}
+
+.upgrades-pokys {
+  display: flex;
 }
 
 h3 {
@@ -90,13 +96,54 @@ h3 {
   color: rgb(253,63,107);
 }
 
-.pokys {
+.pokys,
+.spanpps {
   color: rgb(253,63,107);
 }
 
+/* CLICK */
+#number-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+
+}
+
+.number {
+  position: absolute;
+  color: rgb(253,63,107);
+  font-size: 2.5em;
+  font-weight: 800;
+  animation: fadeOut 1s forwards;
+  background: none;
+  text-shadow: 
+  1px 1px 0px black,
+  -1px 1px 0px black,
+  1px -1px 0px black,
+  -1px -1px 0px black,
+  1px 0px 0px black,
+  0px 1px 0px black,
+  -1px 0px 0px black,
+  0px -1px 0px black;
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+}
+
+/*  */
 .upgrades {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: .5em;
   place-items: center;
   justify-content: center;
