@@ -32,7 +32,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: rgb(253, 63, 107);
 }
 button:focus,
 button:focus-visible {
@@ -96,6 +96,7 @@ h1 {
   transition: filter 300ms;
   cursor: pointer;
   position: relative;
+  background: none;
 }
 
 .aside {
@@ -112,11 +113,11 @@ h1 {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(253, 63, 107);
+  background-color: #333;
 }
 
 ::-webkit-slider-thumb:hover {
-  background-color: rgb(253, 40, 90);
+  background-color: black;
 }
 
 .pokys-counter {
@@ -136,6 +137,7 @@ h3 {
 }
 
 /* CLICK */
+
 #number-container {
   position: absolute;
   top: 0;
@@ -174,7 +176,7 @@ h3 {
   }
 }
 
-/*  */
+/* UPGRADES */
 .upgrades {
   display: flex;
   flex-direction: column;
@@ -205,63 +207,6 @@ footer {
   color: #888;
 }
 
-/* CARD */
-
-/* .card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 16em;
-  width: 12em;
-  background: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-
-  height: 92%;
-  width: 92%;
-  background-color: yellow;
-  border-radius: 8px;
-}
-
-.card-name {
-  font-size: 1.25em;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-top: .5em;
-  color: black;
-  background: none;
-}
-
-.card-img {
-  height: 60%;
-  background: none;
-}
-
-.card-info {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
-  height: 30%;
-  background: none;
-  gap: .25em;
-}
-
-.card-info-header-text {
-  background: yellow;
-  color: #242424;
-  font-weight: 800;
-}
-.card-info-text {
-  background: yellow;
-  color: #242424;
-  font-weight: 500;
-} */
 
 /* SOCIAL BUTTONS */
 .social-buttons {
@@ -339,14 +284,14 @@ footer {
 }
 
 .card img {
-  width: 25%;
+  width: 30%;
   height: 9em;
   background: none;
 }
 
 .card-info {
   background: none;
-  width: 75%;
+  width: 70%;
   height: 100%;
 }
 
