@@ -44,115 +44,97 @@ const increment = () => {
   numberPCI();
 }
 
-// PIKACHU
-const pikachuCost = document.querySelector('.pikachu-cost');
-let parsedPikachuCost = parseFloat(pikachuCost.innerHTML);
-const pikachuLevel = document.querySelector('.pikachu-level');
-let parsedPikachuLevel = parseFloat(pikachuLevel.innerHTML);
-const pikachuIncrease = document.querySelector('.pikachu-increase');
-let parsedPikachuIncrease = parseFloat(pikachuIncrease.innerHTML)
-
-// BULBASAUR
-const bulbasaurCost = document.querySelector('.bulbasaur-cost');
-let parsedBulbasaurCost = parseFloat(bulbasaurCost.innerHTML);
-const bulbasaurLevel = document.querySelector('.bulbasaur-level');
-let parsedBulbasaurLevel = parseFloat(bulbasaurLevel.innerHTML);
-const bulbasaurIncrease = document.querySelector('.bulbasaur-increase');
-let parsedBulbasaurIncrease = parseFloat(bulbasaurIncrease.innerHTML);
-
-// CHARMANDER
-const charmanderCost = document.querySelector('.charmander-cost');
-let parsedCharmanderCost = parseFloat(charmanderCost.innerHTML);
-const charmanderLevel = document.querySelector('.charmander-level');
-let parsedCharmanderLevel = parseFloat(charmanderLevel.innerHTML);
-const charmanderIncrease = document.querySelector('.charmander-increase');
-let parsedCharmanderIncrease = parseFloat(charmanderIncrease.innerHTML);
-
-// SQUIRTLE
-const squirtleCost = document.querySelector('.squirtle-cost');
-let parsedSquirtleCost = parseFloat(squirtleCost.innerHTML);
-const squirtleLevel = document.querySelector('.squirtle-level');
-let parsedSquirtleLevel = parseFloat(squirtleLevel.innerHTML);
-const squirtleIncrease = document.querySelector('.squirtle-increase');
-let parsedSquirtleIncrease = parseFloat(squirtleIncrease.innerHTML);
-
-// GREAT BALL
-const greatBallCost = document.querySelector('.great-ball-cost');
-let parsedGreatBallCost = parseFloat(greatBallCost.innerHTML);
-const greatBallLevel = document.querySelector('.great-ball-level');
-let parsedGreatBallLevel = parseFloat(greatBallLevel.innerHTML);
-const greatBallIncrease = document.querySelector('.great-ball-increase');
-let parsedGreatBallIncrease = parseFloat(greatBallIncrease.innerHTML);
-
 const upgrades = [
   {
     name: 'pikachu',
     cost: document.querySelector('.pikachu-cost'),
-    parsedCost: parseFloat(document.querySelector('.pikachu-cost').innerHTML),
+    parsedCost: parseInt(document.querySelector('.pikachu-cost').innerHTML),
     increase: document.querySelector('.pikachu-increase'),
-    parsedIncrease: parseFloat(document.querySelector('.pikachu-increase').innerHTML),
+    parsedIncrease: parseInt(document.querySelector('.pikachu-increase').innerHTML),
     level: document.querySelector('.pikachu-level'),
+    baseIncrease: 1,
+    baseCost: 10,
     pokyMultiplier: 2,
-    costMultiplier: 4,
+    costMultiplier: 3,
     isPerSecond: false,
   },
   {
     name: 'bulbasaur',
     cost: document.querySelector('.bulbasaur-cost'),
-    parsedCost: parseFloat(document.querySelector('.bulbasaur-cost').innerHTML),
+    parsedCost: parseInt(document.querySelector('.bulbasaur-cost').innerHTML),
     increase: document.querySelector('.bulbasaur-increase'),
-    parsedIncrease: parseFloat(document.querySelector('.bulbasaur-increase').innerHTML),
+    parsedIncrease: parseInt(document.querySelector('.bulbasaur-increase').innerHTML),
     level: document.querySelector('.bulbasaur-level'),
+    baseIncrease: 2,
+    baseCost: 200,
     pokyMultiplier: 2,
-    costMultiplier: 4,
+    costMultiplier: 3,
     isPerSecond: false,
   },
   {
     name: 'charmander',
     cost: document.querySelector('.charmander-cost'),
-    parsedCost: parseFloat(document.querySelector('.charmander-cost').innerHTML),
+    parsedCost: parseInt(document.querySelector('.charmander-cost').innerHTML),
     increase: document.querySelector('.charmander-increase'),
-    parsedIncrease: parseFloat(document.querySelector('.charmander-increase').innerHTML),
+    parsedIncrease: parseInt(document.querySelector('.charmander-increase').innerHTML),
     level: document.querySelector('.charmander-level'),
+    baseIncrease: 5,
+    baseCost: 500,
     pokyMultiplier: 2,
-    costMultiplier: 4,
+    costMultiplier: 3,
     isPerSecond: false,
   },
   {
     name: 'squirtle',
     cost: document.querySelector('.squirtle-cost'),
-    parsedCost: parseFloat(document.querySelector('.squirtle-cost').innerHTML),
+    parsedCost: parseInt(document.querySelector('.squirtle-cost').innerHTML),
     increase: document.querySelector('.squirtle-increase'),
-    parsedIncrease: parseFloat(document.querySelector('.squirtle-increase').innerHTML),
+    parsedIncrease: parseInt(document.querySelector('.squirtle-increase').innerHTML),
     level: document.querySelector('.squirtle-level'),
+    baseIncrease: 10,
+    baseCost: 1000,
     pokyMultiplier: 2,
-    costMultiplier: 4,
+    costMultiplier: 3,
     isPerSecond: false,
   },
   {
     name: 'great-ball',
     cost: document.querySelector('.great-ball-cost'),
-    parsedCost: parseFloat(document.querySelector('.great-ball-cost').innerHTML),
+    parsedCost: parseInt(document.querySelector('.great-ball-cost').innerHTML),
     increase: document.querySelector('.great-ball-increase'),
-    parsedIncrease: parseFloat(document.querySelector('.great-ball-increase').innerHTML),
+    parsedIncrease: parseInt(document.querySelector('.great-ball-increase').innerHTML),
     level: document.querySelector('.great-ball-level'),
+    baseIncrease: 10,
+    baseCost: 10000,
     pokyMultiplier: 2,
-    costMultiplier: 4,
+    costMultiplier: 3,
     isPerSecond: true,
   },
 ];
+
 
 function buyUpgrade(upgrade) {
   const up = upgrades.find((object) => object.name === upgrade)
   if (up && parsedPokys >= up.parsedCost){
     parsedPokys -= up.parsedCost;
     pokys.innerHTML = parsedPokys;
-    up.level.innerHTML++;
-    up.parsedIncrease = parseFloat(up.parsedIncrease * up.pokyMultiplier);
+
+    const currentLevel = parseInt(up.level.innerHTML) + 1;
+    up.level.innerHTML = currentLevel;
+
+    const increment = up.baseIncrease * Math.pow(up.pokyMultiplier, currentLevel - 1);
+    currentLevel === 1 ?
+      up.parsedIncrease = up.baseIncrease :
+      up.parsedIncrease *= increment;
+
     up.parsedCost *= up.costMultiplier;
-    up.isPerSecond ? PPS += up.parsedIncrease : PCI += up.parsedIncrease;
+
+    up.isPerSecond ?
+      PPS += increment:
+      PCI += increment;
+    
     up.cost.innerHTML = up.parsedCost;
-    up.increase.innerHTML = up.parsedIncrease;
+    up.increase.innerHTML = increment;
     setPPS();
   }
 };
@@ -241,13 +223,54 @@ function buyUpgrade(upgrade) {
 //   }
 // }
 
+// POKYS PER SECOND
+let intervalId;
+
 const setPPS = () => {
-  setInterval(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  intervalId = setInterval(() => {
     parsedPokys += PPS;
     pokys.innerHTML = parsedPokys;
     spanPPS.innerHTML = PPS;
   }, 1000)
 }
+
+const save = () => {
+  localStorage.clear();
+  upgrades.map((upgrade) => {
+    const obj = JSON.stringify({
+      parsedLevel: parseFloat(upgrade.level.innerHTML),
+      parsedCost: upgrade.parsedCost,
+      parsedIncrease: upgrade.parsedIncrease,
+    })
+    localStorage.setItem(upgrade.name, obj);
+  })
+  localStorage.setItem('pci', JSON.stringify(PCI));
+  localStorage.setItem('pps', JSON.stringify(PPS));
+  localStorage.setItem('pokys', JSON.stringify(parsedPokys));
+}
+
+const load = () => {
+  upgrades.map((upgrade) => {
+    const savedValues = JSON.parse(localStorage.getItem(upgrade.name))
+
+    upgrade.parsedCost = savedValues.parsedCost
+    upgrade.parsedIncrease = savedValues.parsedIncrease
+    upgrade.level.innerHTML = savedValues.parsedLevel
+    upgrade.cost.innerHTML =  
+    upgrade.increase.innerHTML = upgrade.parsedIncrease
+  })
+
+  PCI = JSON.parse(localStorage.getItem('pci'))
+  PPS = JSON.parse(localStorage.getItem('pps'))
+  parsedPokys = JSON.parse(localStorage.getItem('pokys'))
+  spanPPS.innerHTML = PPS
+  pokys.innerHTML = parsedPokys;
+  setPPS()
+}
+
 
 const resetGame = () => {
   parsedPokys = 0;
@@ -257,39 +280,49 @@ const resetGame = () => {
   spanPPS.innerHTML = 0;
   parsedPPS = 0;
 
-  parsedPikachuLevel = 0;
-  pikachuLevel.innerHTML = 0;
-  parsedPikachuIncrease = 1;
-  pikachuIncrease.innerHTML = 1;
-  parsedPikachuCost = 10;
-  pikachuCost.innerHTML = 10;
+  upgrades.map((upgrade) => {
+    upgrade.level.innerHTML = 0;
 
-  parsedBulbasaurLevel = 0;
-  bulbasaurLevel.innerHTML = 0;
-  parsedBulbasaurIncrease = 2;
-  bulbasaurIncrease.innerHTML = 2;
-  parsedBulbasaurCost = 200;
-  bulbasaurCost.innerHTML = 200;
+    upgrade.parsedIncrease = upgrade.baseIncrease
+    upgrade.increase.innerHTML = upgrade.baseIncrease
+
+    upgrade.parsedCost = upgrade.baseCost
+    upgrade.cost.innerHTML = upgrade.baseCost
+  })
+
+  // parsedPikachuLevel = 0;
+  // pikachuLevel.innerHTML = 0;
+  // parsedPikachuIncrease = 1;
+  // pikachuIncrease.innerHTML = 1;
+  // parsedPikachuCost = 10;
+  // pikachuCost.innerHTML = 10;
+
+  // parsedBulbasaurLevel = 0;
+  // bulbasaurLevel.innerHTML = 0;
+  // parsedBulbasaurIncrease = 2;
+  // bulbasaurIncrease.innerHTML = 2;
+  // parsedBulbasaurCost = 200;
+  // bulbasaurCost.innerHTML = 200;
   
-  parsedCharmanderLevel = 0;
-  charmanderLevel.innerHTML = 0;
-  parsedCharmanderIncrease = 5;
-  charmanderIncrease.innerHTML = 5;
-  parsedCharmanderCost = 500;
-  charmanderCost.innerHTML = 500;
+  // parsedCharmanderLevel = 0;
+  // charmanderLevel.innerHTML = 0;
+  // parsedCharmanderIncrease = 5;
+  // charmanderIncrease.innerHTML = 5;
+  // parsedCharmanderCost = 500;
+  // charmanderCost.innerHTML = 500;
   
-  parsedSquirtleLevel = 0;
-  squirtleLevel.innerHTML = 0;
-  parsedSquirtleIncrease = 10;
-  squirtleIncrease.innerHTML = 10;
-  parsedSquirtleCost = 1000
-  squirtleCost.innerHTML = 1000;
+  // parsedSquirtleLevel = 0;
+  // squirtleLevel.innerHTML = 0;
+  // parsedSquirtleIncrease = 10;
+  // squirtleIncrease.innerHTML = 10;
+  // parsedSquirtleCost = 1000
+  // squirtleCost.innerHTML = 1000;
  
-  parsedGreatBallLevel = 0;
-  greatBallLevel.innerHTML = 0;
-  parsedGreatBallIncrease = 10;
-  greatBallIncrease.innerHTML = 10;
-  parsedGreatBallCost = 10000;
-  greatBallCost.innerHTML = 10000;
+  // parsedGreatBallLevel = 0;
+  // greatBallLevel.innerHTML = 0;
+  // parsedGreatBallIncrease = 10;
+  // greatBallIncrease.innerHTML = 10;
+  // parsedGreatBallCost = 10000;
+  // greatBallCost.innerHTML = 10000;
   
 }
