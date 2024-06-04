@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./stylesheets/index.css">
+  <link rel="stylesheet" href="./assets/styles/index.css">
 
   <title>PokeClick</title>
 </head>
 <body>
   <header class='banner'>
-    <img src='./images/applogo.png' alt="PokeClick Logo" class="logo"/>
+    <img src='./assets/images/applogo.png' alt="PokeClick Logo" class="logo"/>
     <h1 class='title'>PokeClick</h1>
   </header>
 
@@ -18,9 +18,26 @@
     <h3>Pokys per second: <span class="spanpps">0</span></h3>
   </section>
   <main class="main-section">
-    <img src="./images/click.png" class='click-img' alt="click pokeball image" onclick="increment()" id="clickable-area"/>
+    <img src="./assets/images/click.png" class='click-img' alt="click pokeball image" onclick="increment()" id="clickable-area"/>
     <aside class='aside'>
-      <section class="upgrades">
+      <section class="upgrades" id="upgrades-container">
+
+        <script id="upgrade-template" type="text/template">
+          <article class="card" onclick="buyUpgrade('{{name}}')">
+            <img src="{{image}}" alt="{{name}} card">
+            <div class="card-info">
+              <h4 class="card-name">{{name}}</h4>
+              <div class="card-info-grid">
+                <h6>Click +</h6>
+                <h6>Cost</h6>
+                <span class="{{name}}-level card-level">0</span>
+                <span class="{{name}}-increase">{{baseIncrease}}</span>
+                <span class="{{name}}-cost">{{baseCost}}</span>
+              </div>
+            </div>
+          </article>
+        </script>
+<!-- 
         <article class="card" onclick="buyUpgrade('pikachu')">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" alt="">
           <div class="card-info">
@@ -85,7 +102,8 @@
               <span class="great-ball-cost">10000</span>
             </div>
           </div>
-        </article>
+        </article> -->
+
       </section>
     </aside>      
     <div id="number-container"></div>
@@ -116,6 +134,6 @@
 
   </footer>
 
-  <script src="index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 </html>
